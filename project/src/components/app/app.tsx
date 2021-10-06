@@ -1,5 +1,11 @@
-function App(): JSX.Element {
-  return <p>Hello, world!</p>;
+import MainScreen from '../main-screen/main-screen';
+
+type AppScreenProps = {
+  placesToStay: number;
+}
+
+function App({placesToStay}: AppScreenProps): JSX.Element {
+  return <MainScreen placesToStay={placesToStay}  />;
 }
 
 export default App;
