@@ -1,33 +1,36 @@
-import PlaceCard from '../place-card/place-card';
+import { Offers } from '../../types/offers';
+import OffersListProps from '../offers-list/offers-list';
+import {Link} from 'react-router-dom';
 
 type MainScreenProps = {
   placesToStay: number;
+  offers: Offers
 }
 
-function MainScreen({placesToStay}: MainScreenProps): JSX.Element {
+function MainScreen({placesToStay, offers}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
+              <Link className="header__logo-link header__logo-link--active"  to='/' >
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link className="header__nav-link header__nav-link--profile"  to='/favorites' >
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <Link  to='/login' >
                     <span className="header__signout">Sign out</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -41,34 +44,34 @@ function MainScreen({placesToStay}: MainScreenProps): JSX.Element {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <div className="locations__item-link tabs__item">
                   <span>Paris</span>
-                </a>
+                </div>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <div className="locations__item-link tabs__item">
                   <span>Cologne</span>
-                </a>
+                </div>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <div className="locations__item-link tabs__item">
                   <span>Brussels</span>
-                </a>
+                </div>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
+                <div className="locations__item-link tabs__item tabs__item--active">
                   <span>Amsterdam</span>
-                </a>
+                </div>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <div className="locations__item-link tabs__item">
                   <span>Hamburg</span>
-                </a>
+                </div>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <div className="locations__item-link tabs__item">
                   <span>Dusseldorf</span>
-                </a>
+                </div>
               </li>
             </ul>
           </section>
@@ -93,12 +96,8 @@ function MainScreen({placesToStay}: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={1}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">\
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
-                <PlaceCard />
+              <div className="cities__places-list places__list tabs__content">
+                <OffersListProps offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">
